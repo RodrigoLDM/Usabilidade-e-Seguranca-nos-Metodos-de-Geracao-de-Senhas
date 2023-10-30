@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Passphrase</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1 class="title-text-style">Passphrase</h1>
+        <div class="box" style="border-width: 0.1rem">
+            <div class="text-style" style="
+            padding-left: 5rem;
+            padding-right: 5rem;
+            display: flex;
+            flex-direction: column;
+          ">
+
+                <div style="display: flex; flex-direction: row">
+                    Quantidade de palavras:
+                    <input type="number" min="1" max="20" name="numero" id="numero" /><br />
+                </div>
+                <div style="display: flex; flex-direction: row">
+                    Digite o separador (apenas um caractere)
+                    <input type="text" maxlength="1" name="separador" id="separador" />
+                </div>
+                <div style="display: flex; flex-direction: row">
+                    <button onclick=changePasswordPassphrase()>Gerar senha</button>
+                    <span id="senha">Senha será gerada aqui</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" style="margin-top: 3rem; border-radius: 4px">
+            <p class="text-style" style="padding-left: 1.5rem; padding-right: 1.5rem">
+                O algoritmo de Passphrase gera uma senha formada por diferentes palavras, podendo ser separadas por um
+                separador em comum.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

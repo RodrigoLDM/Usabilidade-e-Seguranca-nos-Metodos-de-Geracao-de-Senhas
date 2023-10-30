@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Dicionário</title>
+    <script src="script.js"></script>
+</head>
+</head>
+
+<body>
+    <div>
+        <h1 class="title-text-style">Dicionário</h1>
+        <div class="box" style="border-width: 0.1rem">
+            <div class="text-style" style="
+            padding-left: 5rem;
+            padding-right: 5rem;
+            display: flex;
+            flex-direction: column;
+          ">
+
+                <div style="display: flex; flex-direction: row">
+                    Senhá terá letras maiúsculas?
+                    <input type="checkbox" name="hasupper" id="hasupper" /><br />
+                </div>
+                <div style="display: flex; flex-direction: row">
+                    <button onclick=changePasswordDict()>Gerar senha</button>
+                    <span id="senha">Senha será gerada aqui</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" style="margin-top: 3rem; border-radius: 4px;">
+            <p class="text-style" style="padding-left: 1.5rem; padding-right: 1.5rem">
+                No método de dicionário, a senha será uma palavra, podendo conter letras maiúsculas.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
