@@ -12,8 +12,18 @@
 </head>
 
 <body>
+    <div class="topnav">
+        <a href="index.html">Página inicial</a>
+    </div>
     <div>
         <h1 class="title-text-style">Munged</h1>
+
+        <div class="box-generate-password">
+            <button class="button-generate-password" onclick=changePasswordMunged()>Gerar senha</button>
+
+            <span id="senha"></span>
+        </div>
+
         <div class="box" style="border-width: 0.1rem">
             <div class="text-style" style="
             padding-left: 5rem;
@@ -23,17 +33,14 @@
           ">
 
                 <div style="display: flex; flex-direction: row">
-                    Senhá terá letras maiúsculas?
+                    Senha terá letras maiúsculas?
                     <input type="checkbox" name="hasupper" id="hasupper" /><br />
                 </div>
-                <div style="display: flex; flex-direction: row">
-                    <button onclick=changePasswordMunged()>Gerar senha</button>
-                    <span id="senha">Senha será gerada aqui</span>
-                </div>
+
             </div>
         </div>
 
-        <div class="box" style="margin-top: 3rem; border-radius: 4px;">
+        <div class="box" style="margin-top: 3rem;">
             <p class="text-style" style="padding-left: 1.5rem; padding-right: 1.5rem">
                 No método de munged, a senha será uma palavra, podendo conter letras , porém com algumas letras
                 substituídas por caracteres especiais.
