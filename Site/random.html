@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
-    <title>Dicionário</title>
+    <title>Senha aleatória</title>
     <script type="module" src="app.js"></script>
 </head>
 </head>
@@ -16,7 +16,7 @@
         <a href="index.html">Página inicial</a>
     </div>
     <div>
-        <h1 class="title-text-style">Dicionário</h1>
+        <h1 class="title-text-style">Senha aleatória</h1>
 
         <div class="box-generate-password">
             <button class="button-generate-password" id="generate-password">Gerar senha</button>
@@ -28,6 +28,7 @@
             <span id="entropia" style="word-break: break-all;"></span>
         </div>
 
+
         <div class="box" style="border-width: 0.1rem">
             <div class="text-style" style="
             padding-left: 5rem;
@@ -35,10 +36,25 @@
             display: flex;
             flex-direction: column;
           ">
-
+                <div style="display: flex; flex-direction: row">
+                    Quantidade de palavras na senha:
+                </div>
+                <div style="display: flex; flex-direction: row">
+                    <input style="margin-right: 1rem;" type="range" min="1" max="50" value="1" name="numero" id="numero"
+                        class="slider" />
+                    <span id="valorNumero"></span>
+                </div>
                 <div style="display: flex; flex-direction: row">
                     Senha terá letras maiúsculas?
                     <input type="checkbox" name="hasupper" id="hasupper" /><br />
+                </div>
+                <div style="display: flex; flex-direction: row">
+                    Senha terá números?
+                    <input type="checkbox" name="hasalpha" id="hasalpha" /><br />
+                </div>
+                <div style="display: flex; flex-direction: row">
+                    Senha terá caracteres especiais?
+                    <input type="checkbox" name="hasspecial" id="hasspecial" /><br />
                 </div>
 
             </div>
@@ -46,8 +62,8 @@
 
         <div class="box" style="margin-top: 3rem;">
             <p class="text-style" style="padding-left: 1.5rem; padding-right: 1.5rem">
-                No método de dicionário, a senha será uma palavra, podendo conter letras maiúsculas, e nesse gerador
-                serão utilizadas palavras em inglês.
+                No método de senha aleatória, uma senha será gerada por caracteres aleatórios, dependendo do tamanho
+                escolhido e se haverá números, letras maiúsculas e/ou caracteres especiais.
             </p>
         </div>
     </div>

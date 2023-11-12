@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css" />
     <title>Munged</title>
-    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
 </head>
 </head>
 
@@ -19,9 +19,13 @@
         <h1 class="title-text-style">Munged</h1>
 
         <div class="box-generate-password">
-            <button class="button-generate-password" onclick=changePasswordMunged()>Gerar senha</button>
+            <button class="button-generate-password" id="generate-password">Gerar senha</button>
 
             <span id="senha"></span>
+        </div>
+        <div class="box-generate-password">
+            <span>Entropia: </span>
+            <span id="entropia" style="word-break: break-all;"></span>
         </div>
 
         <div class="box" style="border-width: 0.1rem">
@@ -43,7 +47,7 @@
         <div class="box" style="margin-top: 3rem;">
             <p class="text-style" style="padding-left: 1.5rem; padding-right: 1.5rem">
                 No método de munged, a senha será uma palavra, podendo conter letras , porém com algumas letras
-                substituídas por caracteres especiais.
+                substituídas por números, e nesse gerador serão utilizadas palavras em inglês.
             </p>
         </div>
     </div>

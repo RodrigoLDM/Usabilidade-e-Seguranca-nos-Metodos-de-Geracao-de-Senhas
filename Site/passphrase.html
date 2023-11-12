@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <title>Passphrase</title>
-    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
 </head>
 
 <body>
@@ -20,9 +20,13 @@
         <h1 class="title-text-style">Passphrase</h1>
 
         <div class="box-generate-password">
-            <button class="button-generate-password" onclick=changePasswordPassphrase()>Gerar senha</button>
+            <button class="button-generate-password" id="generate-password">Gerar senha</button>
 
-            <span id="senha"></span>
+            <span id="senha" style="word-break: break-all;"></span>
+        </div>
+        <div class="box-generate-password">
+            <span>Entropia: </span>
+            <span id="entropia" style="word-break: break-all;"></span>
         </div>
 
         <div class="box" style="border-width: 0.1rem">
@@ -35,8 +39,12 @@
 
 
                 <div style="display: flex; flex-direction: row">
-                    Quantidade de palavras (máximo 10):
-                    <input style="margin-left: 1rem;" type="number" min="1" max="20" name="numero" id="numero" /><br />
+                    Quantidade de palavras na senha:
+                </div>
+                <div style="display: flex; flex-direction: row">
+                    <input style="margin-right: 1rem;" type="range" min="1" max="20" value="1" name="numero" id="numero"
+                        class="slider" />
+                    <span id="valorNumero"></span>
                 </div>
                 <div style="display: flex; flex-direction: row">
                     Escolha o separador:
@@ -54,7 +62,7 @@
         <div class="box" style="margin-top: 3rem;">
             <p class="text-style" style="padding-left: 1.5rem; padding-right: 1.5rem">
                 O algoritmo de Passphrase gera uma senha formada por diferentes palavras, podendo ser separadas por um
-                separador em comum.
+                separador em comum, e nesse gerador serão utilizadas palavras em inglês.
             </p>
         </div>
 
