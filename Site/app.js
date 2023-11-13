@@ -1,11 +1,61 @@
+/*
+TCC - Segurança e Usabilidade de Senhas
+Funções geradoras de Senha.
+
+- Eduardo Gonçalves
+- Guilherme Afonso
+- Matheus Chang
+- Rodrigo Limongi
+*/
+
 import { wordList, special_characters, numbers, letters } from "./words.js";
 
+/*
+Função auxiliar para sortear um número dentro do range da lista de palavras (wordList)
+*/
 function getRandomNumber() {
   const max = wordList.length - 1;
   const min = 0;
   return Math.floor(Math.random() * (max - min) + min);
 }
 
+/*
+Função auxiliar para um numéro aleatório dentro de um range
+Parâmetros:
+> Valor mínimo (inclusivo)
+> Valor máximo (exclusivo)
+*/
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+/*
+Função auxiliar para sortear uma letra.
+*/
+function getLetter() {
+  return letters[randomNumber(0, letters.length)];
+}
+
+/*
+Função auxiliar para sortear um caracter numérico.
+*/
+function getAlpha() {
+  return numbers[randomNumber(0, numbers.length)];
+}
+
+/*
+Função auxiliar para sortear um caracter especial.
+*/
+function getSpecial() {
+  return special_characters[randomNumber(0, special_characters.length)];
+}
+
+/*
+Função geradora de senhas tipo Passphrases.
+Parâmetros:
+> Número de palavras
+> Caracter separador
+*/
 function generatePassPhrase(numWords, separator = "-") {
   var password = "";
   for (let i = 0; i < numWords; i++) {
@@ -17,10 +67,11 @@ function generatePassPhrase(numWords, separator = "-") {
   return password;
 }
 
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
-}
-
+/*
+Função geradora de senhas tipo Palavra de Dicionário.
+Parâmetros:
+> Utilizar Caixa alta
+*/
 function generateDictPassword(hasUpper = false) {
   var pass = wordList[getRandomNumber()];
   if (hasUpper == true) {
@@ -36,6 +87,11 @@ function generateDictPassword(hasUpper = false) {
   return pass;
 }
 
+/*
+Função geradora de senhas tipo Munged Password.
+Parâmetros:
+> Utilizar Caixa alta
+*/
 function mungedPassword(hasUpper = false) {
   var dictionary = {
     a: "4",
@@ -59,26 +115,14 @@ function mungedPassword(hasUpper = false) {
   return pass;
 }
 
-function entropy(password) {
-  const charSet = new Set(password);
-  const charSetSize = charSet.size;
-  const passwordSize = password.length;
-  const entropy = Math.log2(Math.pow(charSetSize, passwordSize));
-  return entropy;
-}
-
-function getLetter() {
-  return letters[randomNumber(0, letters.length)];
-}
-
-function getAlpha() {
-  return numbers[randomNumber(0, numbers.length)];
-}
-
-function getSpecial() {
-  return special_characters[randomNumber(0, special_characters.length)];
-}
-
+/*
+Função geradora de Random Passwords.
+Parâmetros:
+> Quantidade de Caracteres
+> Utilizar caixa alta
+> Utilizar caracteres numéricos
+> Utilizar caracteres especiais
+*/
 function generateRandomPassword(len, hasUpper, hasAlpha, hasSpecial) {
   var pass = "";
   var changedLetters = [];
@@ -167,6 +211,37 @@ function generateRandomPassword(len, hasUpper, hasAlpha, hasSpecial) {
   return pass;
 }
 
+/*
+Função para medir entropia das senhas.
+*/
+function entropy(password) {
+  const charSet = new Set(password);
+  const charSetSize = charSet.size;
+  const passwordSize = password.length;
+  let count = 0;
+  let freq = {};
+
+  // Pegar a frequencia de cada caracter
+  charSet.forEach(function (value) {
+    for (let i = 0; i < passwordSize; i++) {
+      if (value == password[i]) {
+        count++;
+      }
+    }
+    freq[value] = (count / passwordSize).toFixed(3);
+    count = 0;
+  });
+
+  let entropy = 0;
+
+  // Cálculo da entropia a partir da frequencia de cada caracter
+  for (let f in freq) {
+    entropy += Math.log2(freq[f]) * freq[f];
+  }
+
+  return entropy.toFixed(4) * -1;
+}
+
 // Vê em qual página está ( para verificar qual senha deve ser gerada)
 const path = window.location.pathname;
 console.log(path);
@@ -251,28 +326,4 @@ if (numero) {
   slider.oninput = function () {
     output.innerHTML = this.value;
   };
-}
-
-//APAGA DPS FI
-//N ESQUECE
-//APAGA
-console.log("Password;type\n");
-for (let i = 0; i < 2; i++) {
-  let pass = generateRandomPassword(randomNumber(17, 21), true, true, true);
-  console.log(pass + ";Random Passwords");
-}
-
-for (let i = 0; i < 2; i++) {
-  let pass = generatePassPhrase(3);
-  console.log(pass + ";Passphrases");
-}
-
-for (let i = 0; i < 2; i++) {
-  let pass = mungedPassword(true);
-  console.log(pass + ";Munged Passwords");
-}
-
-for (let i = 0; i < 2; i++) {
-  let pass = generateDictPassword(true);
-  console.log(pass + ";Dict Passwords");
 }
