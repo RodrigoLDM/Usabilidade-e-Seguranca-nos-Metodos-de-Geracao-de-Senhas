@@ -8,7 +8,7 @@ Na pasta **protótipo** temos os arquivos de nosso protótipo Web para que o usu
 
 ---
 ### Grupo
-Eduardo Gonçalves
-Guilherme A. Christino
-Matheus M. Chang
-Rodrigo L. Martini
+Eduardo Gonçalves  
+Guilherme A. Christino  
+Matheus M. Chang   
+Rodrigo L. Martini   
