@@ -218,28 +218,8 @@ function entropy(password) {
   const charSet = new Set(password);
   const charSetSize = charSet.size;
   const passwordSize = password.length;
-  let count = 0;
-  let freq = {};
-
-  // Pegar a frequencia de cada caracter
-  charSet.forEach(function (value) {
-    for (let i = 0; i < passwordSize; i++) {
-      if (value == password[i]) {
-        count++;
-      }
-    }
-    freq[value] = (count / passwordSize).toFixed(3);
-    count = 0;
-  });
-
-  let entropy = 0;
-
-  // Cálculo da entropia a partir da frequencia de cada caracter
-  for (let f in freq) {
-    entropy += Math.log2(freq[f]) * freq[f];
-  }
-
-  return entropy * -1;
+  const entropy = Math.log2(Math.pow(charSetSize, passwordSize));
+  return entropy.toFixed(3);
 }
 
 // Vê em qual página está ( para verificar qual senha deve ser gerada)
